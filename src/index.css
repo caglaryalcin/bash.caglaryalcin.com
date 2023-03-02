@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color:#0f0f0f;
+  background-color:#000000;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -60,17 +60,17 @@ pre {
 }
 
 ::-webkit-scrollbar-track {
-  background: #6272a4;
+  background: #2f3135;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #bd93f9;
+  background: #bcbabe;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #bd93f9;
+  background: #bab2c4;
 }
 
 .container {

@@ -1,5 +1,4 @@
 /* eslint-disable import/no-anonymous-default-export */
-import getnp from "../../utils/spotify"
 export default {
     commands: {
         echo: {
@@ -7,15 +6,6 @@ export default {
             usage: 'echo <text>',
             fn: (...args) => args.join(" ")
         },
-        // cat: {
-        //     description: 'Get a cute cat image.',
-        //     usage: 'cat',
-        //     fn: async () => {
-        //         const url = await getcat()
-        //         window.open(url, '_blank')
-        //         return "fetching cat...\ncat fetched successfully!"
-        //     }
-        // },
         about: {
             description: 'About Me.',
             usage: 'about',
@@ -79,25 +69,16 @@ export default {
             description: "Opens this website's github repository.",
             usage: 'repo',
             fn: () => {
-                window.open("https://github.com/caglaryalcin.com/terminal", '_blank')
+                window.open("https://github.com/caglaryalcin/bash", '_blank')
                 return "opening repository..."
             }
         },
-        spotify: {
-            description: 'Get info about my recently played song.',
-            usage: 'spotify',
-            fn: async () => {
-                const item = await getnp()
-                return `
-                    Now Playing/Recently Played\n
-                    ---\n
-                    Song: ${item.song}\n
-                    Artist: ${item.artist}\n---\n
-                `
-            }
-        }
     },
     overwrites:{
+        sudo: {
+            description: 'super user "do"',
+            usage: 'sudo',
+        },
         help: {
             description: 'List all available commands',
             usage: 'help',

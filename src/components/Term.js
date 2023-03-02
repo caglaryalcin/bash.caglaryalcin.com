@@ -18,9 +18,9 @@ export default function Term() {
             welcomeMessage={[
                 "Welcome to Terminal!",
                 "---",
-                "Type 'help' to see a list of commands.",
+                "type 'help' to see a list of commands.",
                 "---",
-                "try starting with 'cat' (〜￣▽￣)〜",
+                "try starting with 'cat'",
                 "---",
             ]}
             commands={{
@@ -50,7 +50,7 @@ export default function Term() {
                     }
                 },
                 cd: {
-                    description: 'Change directory, not really, lol!',
+                    description: 'Change directory',
                     usage: 'cd <directory>',
                     fn: (...args) => {
                         if (args.length===1 && args[0]==='..') {
@@ -85,6 +85,18 @@ export default function Term() {
                     }
 
                 },
+                dir: {
+                    description: 'List files in the current directory',
+                    usage: 'dir',
+                    fn: () => {
+                        if (dir[home].length === 0) {
+                            return 'nothing here :(\nUse mkdir to create a dir inside this one.'
+                        } else {
+                            return dir[home].join('\n')
+                        }
+                    }
+
+                },
                 mkdir: {
                     description: 'Make a directory',
                     usage: 'mkdir <directory>',
@@ -95,7 +107,6 @@ export default function Term() {
                                 [home]: [...dir[home], args[0]],
                                 [args[0]]:[]
                             })
-                            //console.log(dir)
                             return `created directory ${args[0]}.`
                         } else {
                             return 'invalid arguments'
@@ -109,6 +120,15 @@ export default function Term() {
                         return `
                             ${Object.keys(owrs).map(cmd => `${cmd}${" ".repeat(12-cmd.length)} | ${owrs[cmd].description}${" ".repeat(39-owrs[cmd].description.length)} | ${owrs[cmd].usage}`).join('\n')}
                             ${Object.keys(cmds).map(cmd => `${cmd}${" ".repeat(12-cmd.length)} | ${cmds[cmd].description}${" ".repeat(39-cmds[cmd].description.length)} | ${cmds[cmd].usage}`).join('\n')}
+                        `
+                    }
+                },
+                sudo: {
+                    description: 'List all available commands',
+                    usage: 'help',
+                    fn: () => {
+                        return `
+                        sudo is authorized only by the site owner.
                         `
                     }
                 },
@@ -127,7 +147,7 @@ export default function Term() {
             styleEchoBack='fullInherit'
             contentStyle={{ color: '#fff' , fontWeight: 'normal', paddingLeft: null}} // Text colour
             promptLabelStyle={{ color: '#fff' , fontWeight:'normal'}} // Prompt label colour
-            inputTextStyle={{ color: '#f1fa8c' , fontWeight: 'normal'}}
+            inputTextStyle={{ color: '#fff' , fontWeight: 'normal'}}
             messageStyle={{ color: '#16bd57' , fontWeight: 'normal', paddingLeft: null}}
             scrollBehavior='auto'
             noDefaults
