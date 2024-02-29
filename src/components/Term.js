@@ -7,7 +7,7 @@ export default function Term() {
     const cmds = commands.commands
     const owrs = commands.overwrites
     const terminal = React.createRef()
-    const [prompt, setPrompt] = React.useState('caglar@/m4a1:~$ ')
+    const [prompt, setPrompt] = React.useState('caglar@m4a1:~$ ')
     const [home, sethome] = React.useState('bash')
     const [dir, setdir] = React.useState({
         'bash': []
@@ -54,7 +54,7 @@ export default function Term() {
                     usage: 'cd <directory>',
                     fn: (...args) => {
                         if (args.length===1 && args[0]==='..') {
-                            if (prompt === 'caglar@/m4a1:~$ ') {
+                            if (prompt === 'caglar@m4a1:~$ ') {
                                 return 'cannot go up'
                             } else {
                                 setPrompt(prompt.substring(0, prompt.lastIndexOf('/'))+":~$ ")
